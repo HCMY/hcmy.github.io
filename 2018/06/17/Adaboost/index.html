@@ -117,18 +117,21 @@
 
 
 
-<meta name="description" content="啊。。。。。。md文件都丢了">
+<meta name="description" content="AdaBoost 属于集成学习算法的一种。集成学习通过构建多个学习任务。结构框架如图所示  集成学习通过多个分类器进行结合，因而大多数情况下拥有较好的泛化性能，以AdaBoost为例，其集成方法各有千秋：可以是同一算法在不同设置下集成；也可以是在不同数据集上集成，一般数据进行抽样训练。不同的学习器要有一定的准确性，又要有差异性。如图是Ada的模型： 右边矩形代表不同权重下的数据集（同一数据集） A">
 <meta name="keywords" content="Algorithm">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Adaboost">
 <meta property="og:url" content="http://yoursite.com/2018/06/17/Adaboost/index.html">
 <meta property="og:site_name" content="zhouyc">
-<meta property="og:description" content="啊。。。。。。md文件都丢了">
+<meta property="og:description" content="AdaBoost 属于集成学习算法的一种。集成学习通过构建多个学习任务。结构框架如图所示  集成学习通过多个分类器进行结合，因而大多数情况下拥有较好的泛化性能，以AdaBoost为例，其集成方法各有千秋：可以是同一算法在不同设置下集成；也可以是在不同数据集上集成，一般数据进行抽样训练。不同的学习器要有一定的准确性，又要有差异性。如图是Ada的模型： 右边矩形代表不同权重下的数据集（同一数据集） A">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-17T09:18:23.763Z">
+<meta property="og:image" content="http://img.blog.csdn.net/20180117224333866?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcXFfMjY5MTE2MTk=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20180117224830436?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcXFfMjY5MTE2MTk=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:updated_time" content="2018-06-18T01:48:31.527Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Adaboost">
-<meta name="twitter:description" content="啊。。。。。。md文件都丢了">
+<meta name="twitter:description" content="AdaBoost 属于集成学习算法的一种。集成学习通过构建多个学习任务。结构框架如图所示  集成学习通过多个分类器进行结合，因而大多数情况下拥有较好的泛化性能，以AdaBoost为例，其集成方法各有千秋：可以是同一算法在不同设置下集成；也可以是在不同数据集上集成，一般数据进行抽样训练。不同的学习器要有一定的准确性，又要有差异性。如图是Ada的模型： 右边矩形代表不同权重下的数据集（同一数据集） A">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20180117224333866?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcXFfMjY5MTE2MTk=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
 
 
 
@@ -410,7 +413,29 @@
       
 
       
-        <p>啊。。。。。。md文件都丢了</p>
+        <p>AdaBoost 属于<strong>集成学习</strong>算法的一种。集成学习通过构建多个学习任务。结构框架如图所示</p>
+<p><img src="http://img.blog.csdn.net/20180117224333866?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcXFfMjY5MTE2MTk=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+<p>集成学习通过多个分类器进行结合，因而大多数情况下拥有较好的泛化性能，以AdaBoost为例，其集成方法各有千秋：可以是同一算法在不同设置下集成；也可以是在不同数据集上集成，一般数据进行抽样训练。<br>不同的学习器要有一定的准确性，又要有差异性。<br>如图是Ada的模型：</p>
+<p><img src="http://img.blog.csdn.net/20180117224830436?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcXFfMjY5MTE2MTk=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"><br>右边矩形代表不同权重下的数据集（同一数据集）</p>
+<p>AdaBoost既可以用于分类问题，也可以用于回归问题。<br>关于如何推导出算法的简洁公式：（二分类为例）<br>二分类问题 $y\in {1,-1}$ 和真实的取值函数$f(x)$, 假设基础分类器的错误率为$\epsilon$,对于每个分类器$h_i(x)$ 有<br>$$P[h_i(x)\ne f(x)]=\epsilon$$<br>原则上若超过半数以上的分类器分类正确，则认为集成分类就是正确的<br>集成分类器是其线性组合：<br>$$H(x)=sign \bigg( \sum_{t=1}^{T}h_i(x)\biggr)$$<br>而在AdaBoost中，有一种加权线性模型：<br>$$H(x)= \sum_{t=1}^{T}\alpha_i h_i(x)$$<br>其中$\alpha_i$为各自分类器的权重。<br>在分布$D$上，（D为分类器权重向量），定义的最小化损失函数$L_{exp}$的表达式为（exp为 exponential loss function 即最小化损失函数）：<br>$$L_{exp}(H|D)=e^{-f(x)H(x)}$$<br>一个多元复合函数，要求其最小化，则求偏导；这里需要对目标函数也就是$H(x)$求偏导：<br>$H(x)包含取值为1的H_1和取值为-1的H_2$,因而链式求偏导过程为：<br>$$e^{-f(x)H(x)}:\begin{cases}<br>f(x):\begin{cases}1,\ -1\end{cases}\<br>H(x):\begin{cases}H_1(x)\ H_2(x)\end{cases}<br>\end{cases}$$</p>
+<p>那么：</p>
+<p>$\frac{\partial L_{exp}(H|D)}{\partial H(x)}=\frac {\partial e^{-f(x)H(x)}}{\partial H(x)}=\frac {\partial e^{-f_1(x)H_1(x)}}{\partial H_1(x)}+\frac {\partial e^{-f_{-1}(x)H_{-1}(x)}}{\partial H(x)}\ =e^{f_1{(x)H_1(x)}}[-f_1(x)]{\frac {\partial H(x)}{\partial H_1(x)}}+e^{f_{-1}{(x)H_{-1}(x)}}[-f_{-1}(x)]{\frac {\partial H(x)}{\partial H_{-1}(x)}}$</p>
+<p>因为$f_{1}(x)=1$与$f_{-1}(x)=-1$,代入上式得：</p>
+<p>$\frac{\partial L_{exp}(H|D)}{\partial H(x)}=-e^{-H_1(x)}P(f(x)=1|x)+e^{H_{-1}(x)}P(f(x)=-1|x)$</p>
+<p>令其为0求解：<br>$e^{-H_1(x)}P(f(x)=1|x)=e^{H_{-1}(x)}P(f(x)=-1|x) \ \Rightarrow \frac{e^{H_{-1}(x)}}{e^{-H_{1}(x)}}=\frac{P(f(x)=1|x)}{P(f(x)=-1|x)}=e^{H_1(x)+H_{-1}(x)}=e^{2H(x)} \ 两边取对数: \ \Rightarrow H(x)=\frac{1}{2}ln \frac{P(f(x)=1|x)}{P(f(x)=-1|x)}$</p>
+<blockquote>
+<p>值得注意的是 $H(x)$一开始由基于算法初始数据分布而来。</p>
+</blockquote>
+<p>因为：$H_t(x)=\alpha_tf(x)$,那么：<br>$$\frac{\partial L_{exp}(\alpha_tf(x)|D_t)}{\partial \alpha_t}=\frac{1}{2}ln \frac{1-\epsilon}{\epsilon}  \Leftarrow权重更新公式$$</p>
+<p>算法获得$H_{t-1}$后，下一轮学习的$h_t$将修正$H_{t-1}$的错误：<br>$$L_{exp}((H_{t-1}+h_t)|D)=e^{-f(x)[H_{t-1}(x)+h_t]}=e^{-f(x)H_{t-1}(x)}*e^{-f(x)h_t(x)}$$</p>
+<p>对后一项进行二阶泰勒展开：<br>因为：二阶泰勒展开：$e^x=1-x+\frac{x^2}{2}$</p>
+<p>故上式得：$e^{-f(x)H_{t-1}(x)}*[1-f(x)h_t(x)+\frac{f_(x)^2h_t(x)^2}{2}]$</p>
+<p>又因为 $f_(x)^2=h_t(x)^2=1 \Rightarrow e^{-f(x)H_{t-1}(x)}*[1-f(x)h_t(x)+\frac{1}{2}]$ </p>
+<p>$argmax=e^{-f(x)H_{t-1}(x)}f(x)h_t(x)$</p>
+<p>$argmax=\frac{e^{-f(x)H_{t-1}(x)}}{E_x\sim D[e^{-f(x)H_{t-1}(x)}]}f(x)h_t(x)$</p>
+<p>那么每次权重$D$的迭代：<br>$$D_{t+1}=\frac{D_t(x)e^{-f(x)H_{t}(x)}}{Sum(D(x))}=\frac{D_t(x)e^{-\alpha_tf(x)h_{t}(x)}}{Sum(D(x))}$$</p>
+<p>下面是代码，公式所有代码实现均在train方法里面：注意一点就是：第一个分类器是基于算法初始数据分布而来（和猜差不多？），此后迭代的生成$h_t$和$\alpha_t$，而后生成$D_t$</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">AdaBoost</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self,data_matrix,labels,iter_nums)</span>:</span></span><br><span class="line">        self.X = np.matrix(data_matrix)</span><br><span class="line">        self.y = np.matrix(labels)</span><br><span class="line">        samples = np.shape(data_matrix)[<span class="number">0</span>]    </span><br><span class="line">        self.D = np.mat(np.ones((samples,<span class="number">1</span>))/samples)</span><br><span class="line">        self.iter = range(iter_nums)</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">stumpClassfily</span><span class="params">(self,data_matrix,dimen,thresh_val,thresh_ineq)</span>:</span></span><br><span class="line">        rest_arr = np.ones((np.shape(data_matrix)[<span class="number">0</span>],<span class="number">1</span>))</span><br><span class="line">        <span class="keyword">if</span> thresh_ineq <span class="keyword">is</span> <span class="string">'lt'</span>:</span><br><span class="line">            rest_arr[data_matrix[:,dimen]&lt;=thresh_val] = <span class="number">-1.0</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            rest_arr[data_matrix[:,dimen]&gt;thresh_val] = <span class="number">-1.0</span></span><br><span class="line">        <span class="keyword">return</span> rest_arr</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">buildStump</span><span class="params">(self)</span>:</span></span><br><span class="line">        samples,features = np.shape(self.X)</span><br><span class="line">        num_steps = <span class="number">10</span></span><br><span class="line">        best_stump = &#123;&#125;</span><br><span class="line">        best_class_estimate = np.mat(np.zeros((samples,<span class="number">1</span>)))</span><br><span class="line">        min_error = np.inf</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(features):</span><br><span class="line">            range_min = self.X[:,i].min()</span><br><span class="line">            range_max = self.X[:,i].max()</span><br><span class="line">            step_size = (range_max-range_min)/num_steps</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">-1</span>,num_steps+<span class="number">1</span>):</span><br><span class="line">                <span class="keyword">for</span> inequal <span class="keyword">in</span> [<span class="string">'lt'</span>,<span class="string">'gt'</span>]:</span><br><span class="line">                    thresh_val = (range_min+float(j)*step_size)</span><br><span class="line">                    predict_val = self.stumpClassfily(self.X,i,thresh_val,inequal)</span><br><span class="line">                    error_matrix = np.matrix(np.ones((samples,<span class="number">1</span>)))</span><br><span class="line">                    error_matrix[predict_val==self.y.T] = <span class="number">0</span></span><br><span class="line">                    weight_error = self.D.T * error_matrix</span><br><span class="line">                    </span><br><span class="line">                    <span class="keyword">if</span> weight_error &lt; min_error:</span><br><span class="line">                        min_error = weight_error</span><br><span class="line">                        best_class_estimate = predict_val.copy()</span><br><span class="line">                        best_stump[<span class="string">'dim'</span>] = i</span><br><span class="line">                        best_stump[<span class="string">'thresh'</span>] = thresh_val</span><br><span class="line">                        best_stump[<span class="string">'ineq'</span>] = inequal</span><br><span class="line">        <span class="keyword">return</span> best_stump,min_error,best_class_estimate</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">train</span><span class="params">(self)</span>:</span></span><br><span class="line">        weak_class_arr = []</span><br><span class="line">        samples = np.shape(self.X)[<span class="number">0</span>]</span><br><span class="line">        aggravete_class_est = np.mat(np.zeros((samples,<span class="number">1</span>)))</span><br><span class="line">        <span class="keyword">for</span> rounds <span class="keyword">in</span> self.iter:</span><br><span class="line">            best_stump,error,class_est = self.buildStump()</span><br><span class="line">            alpha = float(<span class="number">0.5</span>*np.log((<span class="number">1.0</span>-error)/max(error,<span class="number">1e-16</span>)))</span><br><span class="line">            best_stump[<span class="string">'alpha'</span>] = alpha</span><br><span class="line">            weak_class_arr.append(best_stump)</span><br><span class="line">            expon_loss_func = np.multiply(<span class="number">-1</span>*alpha*self.y.T,class_est)</span><br><span class="line">            self.D = np.multiply(self.D,np.exp(expon_loss_func))</span><br><span class="line">            self.D = self.D/self.D.sum()</span><br><span class="line">            aggravete_class_est += alpha*class_est</span><br><span class="line">            agg_errors_matrix = np.multiply(np.sign(aggravete_class_est)!=self.y.T,</span><br><span class="line">                                            np.ones((samples,<span class="number">1</span>)))</span><br><span class="line">            error_rate = agg_errors_matrix.sum()/samples</span><br><span class="line">            <span class="keyword">if</span> error_rate <span class="keyword">is</span> <span class="number">0.0</span>:<span class="keyword">break</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> weak_class_arr</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Predcitor</span><span class="params">(AdaBoost)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self,data_matrix,classifyer_set)</span>:</span></span><br><span class="line">        self.X = data_matrix</span><br><span class="line">        self.classifyers = classifyer_set</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">predict</span><span class="params">(self)</span>:</span></span><br><span class="line">        samples = np.shape(self.X)[<span class="number">0</span>]</span><br><span class="line">        agg_class_est = np.mat(np.zeros((samples,<span class="number">1</span>)))</span><br><span class="line">        <span class="keyword">for</span> classifyer <span class="keyword">in</span> self.classifyers:</span><br><span class="line">            class_est = self.stumpClassfily(self.X,classifyer[<span class="string">'dim'</span>],</span><br><span class="line">                                            classifyer[<span class="string">'thresh'</span>],</span><br><span class="line">                                            classifyer[<span class="string">'ineq'</span>])</span><br><span class="line">            agg_class_est += classifyer[<span class="string">'alpha'</span>]*class_est</span><br><span class="line">        <span class="keyword">return</span> np.sign(agg_class_est)</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -651,13 +676,14 @@
   
 
 
+
+
+
+
+
+
   
-
-
-
-
-
-
+  
 
 
 
@@ -695,7 +721,12 @@
 
   
   
-    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_sphere.min.js"></script>
   
 
 
@@ -773,6 +804,28 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 
